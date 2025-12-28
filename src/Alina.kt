@@ -68,7 +68,7 @@ open class Alina(val zooList: MutableList<Animal>) : Petuh(
         currentEnergy += 10
 
         if (isVeryFat) {
-            println("НА НАХУЙ $name ВЗОРВАЛАСЬ ОТ ХАВКИ 💥💨")
+            println("НА НАХУЙ $name ПОДАВИЛАСЬ ХУЕМ И ВЗОРВАЛАСЬ 💥💨")
             status = false
         }
     }
