@@ -13,17 +13,21 @@ open class Begemot(
     override val isVeryFat: Boolean get() = currentWeight >= 150
 
     override fun eat() {
-        println("Бегемот $name ебашит ртом как экскаватор")
+        println("$name ебашит хавку как экскаватор\uD83C\uDFD7\uFE0F")
         currentEnergy += 30
         currentWeight += 20
+        if (isVeryFat) {
+            println("$name лопнул от переедания\uD83D\uDCA5")
+            status = false
+        }
     }
 
     override fun say() {
-        println("Бегемот $name рыгает и пукает")
+        println("$name рыгает и пукает\uD83E\uDD22")
     }
 
     override fun sleep() {
-        println("Бегемот $name спит (во сне пукает и рыгает)")
+        println("$name спит (во сне пукает и рыгает)\uD83D\uDE34\uD83E\uDD22")
         currentEnergy += 30
     }
 

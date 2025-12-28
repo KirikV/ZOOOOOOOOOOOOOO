@@ -29,7 +29,7 @@ open class Animal(
             if (allActionIsCompleted && status) {
                 delay(1000)
                 currentAge += 1
-                println("$name постарел. Его возраст $currentAge")
+                println("$name постарел⏳")
                 if (!chekStatus()) break
             } else {
                 break
@@ -42,17 +42,17 @@ open class Animal(
 
         when {
             isTooOld -> {
-                println("$name сдох от старости")
+                println("$name сдох от старости⏳")
                 status = false
             }
 
             isVeryFat -> {
-                println("$name лопнул от переедания")
+                println("$name лопнул от переедания\uD83D\uDCA5")
                 status = false
             }
 
             isLowEnergy -> {
-                println("$name упал без сил и не проснулся")
+                println("$name сдох от недомогания\uD83E\uDD40")
                 status = false
             }
         }
@@ -61,31 +61,31 @@ open class Animal(
 
 
     open fun sleep() {
-        println("$name спит")
+        println("$name спит\uD83D\uDE34")
         currentEnergy += 30
     }
 
     open fun eat() {
-        println("$name принимает пищу ртом")
+        println("$name принимает пищу ртом\uD83D\uDE0B")
         currentEnergy += 20
         currentWeight += 10
         if (isVeryFat) {
-            println("$name лопнул от переедания")
+            println("$name лопнул от переедания\uD83D\uDCA5")
             status = false
         }
     }
 
     open fun move() {
-        println("$name передвигается")
+        println("$name бегает\uD83D\uDC3E")
         currentEnergy -= 15
         currentWeight -= 5
         if (isLowEnergy) {
-            println("$name помер от недомогания")
+            println("$name помер от недомогания\uD83E\uDD40")
             status = false
         }
     }
 
     open fun say() {
-        println("$name говорит что-то на своём")
+        println("$name говорит что-то на своём\uD83D\uDDEF\uFE0F")
     }
 }

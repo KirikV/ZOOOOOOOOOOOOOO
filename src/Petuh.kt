@@ -15,21 +15,21 @@ open class Petuh(
     override val isTooOld: Boolean get() = currentAge >= maxAge
 
     override fun eat() {
-        println("Петух $name клюёт зерно")
+        println("$name клюёт зерно\uD83D\uDE0B")
         currentEnergy += 30
         currentWeight += 5
     }
 
     override fun say() {
-        println("Петух $name кукарекает")
+        println("$name кукарекает☀\uFE0F\uD83D\uDCE2")
     }
 
     override fun move() {
-        println("$name передвигается")
+        println("$name летает\uD83D\uDE80")
         currentEnergy -= 70
         currentWeight -= 10
         if (isLowEnergy) {
-            println("Петух $name помер от недомогания")
+            println("$name помер от недомогания\uD83E\uDD40")
             status = false
         }
     }
