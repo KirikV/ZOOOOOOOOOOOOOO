@@ -1,17 +1,28 @@
-import kotlinx.coroutines.*
+import kotlinx.coroutines.isActive
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
+import java.util.concurrent.CopyOnWriteArrayList
 
 fun main() = runBlocking {
     println("Добро пожаловать в зоопарк имени Кащенко!")
-    delay(1000)
 
-    val listAnimals = mutableListOf<Animal>()
-    listAnimals.addAll(listOf(
-        Animal(10, 2, 3, name = "ПЁСЯ"),
-        Animal(10, 4, 1, name = "КИСЯ"),
-        Begemot(10, 1, 99, name = "БОРЯ")
-    ))
+    val listAnimals = CopyOnWriteArrayList<Animal>()
+    val threeFishes = List(3) { Fish(10, 1) }
+    listAnimals.addAll(
+        listOf(
+            Animal(10, 2, 3, name = "ПЁСЯ"),
+            Animal(10, 4, 1, name = "КИСЯ"),
+            Begemot(10, 1, 99, name = "БОРЯ"),
+            Petuh(10, 1, 10, maxAge = 3, name = "Здравый Малый"),
+            Kirik(),
+            Ilya(10, 1, 10, maxAge = 3),
+            Alina(listAnimals)
+        )
+    )
+    listAnimals.addAll(threeFishes)
 
-    val jobs = listAnimals.map { animal ->
+    listAnimals.forEach { animal ->
         launch { animal.lifecycle() }
     }
 
@@ -19,19 +30,20 @@ fun main() = runBlocking {
         while (isActive) {
             listAnimals.removeIf { animal ->
                 if (!animal.status) {
-                    println("--- [!] Хороним ${animal.name} ---")
+                    println("\n--- [!] Хороним ${animal.name} ---\n")
                     true
                 } else {
                     false
                 }
             }
 
-            if (listAnimals.isEmpty()) break
+            if (listAnimals.isEmpty()) {
+                println("Все животные подохли. Поздравляем!!!!")
+                break
+            }
             delay(500)
         }
     }
 
-    jobs.joinAll()
     monitorJob.join()
-    println("Все животные подохли. Поздравляем!!!!")
 }
