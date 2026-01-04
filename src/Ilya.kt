@@ -5,7 +5,7 @@ class Ilya(
     maxAge: Int,
     id: Int = 0
 ) : Petuh(
-    currentEnergy = 15,
+    currentEnergy = 31,
     currentAge = 1,
     currentWeight = 10,
     maxAge = 10,
