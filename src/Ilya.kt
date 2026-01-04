@@ -7,7 +7,7 @@ class Ilya(
 ) : Petuh(
     currentEnergy = 31,
     currentAge = 1,
-    currentWeight = 10,
+    currentWeight = 1,
     maxAge = 10,
     name = if (id == 0) "\uD83D\uDC13Илюха" else "\uD83D\uDC13Илюха №$id"
 ) {
